@@ -5,22 +5,20 @@ smart = "cf.cpp"
 stupid = "ups.cpp"
 generator = "gen.cpp"
 testFile = "input.txt"
+testsCount = 5000
+stopAfterError = True
+fullFeedback = True
+fullFeedbackWithoutTests = False
+timeLimit = 1000
+maxLen = 1024
 
 smartNoExtension = smart.split('.')[0]
 stupidNoExtension = stupid.split('.')[0]
 generatorNoExtension = generator.split('.')[0]
 
-testsCount = 1
-stopAfterError = True
-fullFeedback = True
-fullFeedbackWithoutTests = False
 testsList = []
 
-timeLimit = 1000
-maxLen = 1000
-
 os.system("clear")
-
 os.system(command + generator + " -o ./" + generatorNoExtension)
 os.system(command + smart + " -o ./" + smartNoExtension)
 os.system(command + stupid + " -o ./" + stupidNoExtension)
@@ -54,7 +52,7 @@ for test in range(1, testsCount + 1):
 	#print("\033[1mТест " + str(test) + ": \033[32mOK\033[0m\033[0m")
 	
 	isWA = ((outputSmart) != (outputStupid))
-	isTL = (timeSmart > timeLimit)
+	isTL = (timeSmart * 1000 > timeLimit)
 	
 	if isWA or isTL:
 		if isWA:
